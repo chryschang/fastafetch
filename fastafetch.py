@@ -1,11 +1,4 @@
 #!/usr/bin/python
-"""
-This script fetches fasta files from uniprot.org for all proteins in a csv file.
-UniProt IDs should be listed in the first column of the csv under a header.
-Created 12/25/2016
-@author: Christine Yao-yun Chang
-"""
-
 import sys
 import csv
 import requests
@@ -36,7 +29,7 @@ with open(prot_list, "r") as infile:
     for row in reader:
         protID = row[0]
         url = 'http://www.uniprot.org/uniprot/' + protID +'.fasta' #build url of fasta file from uniprot.org
-        #print("Gathering: ", url) #see what you pulled out
+        print("Gathering: ", url) #see what you pulled out
         response = requests.get(url)
         loc = output + "\\" + protID + '.fasta' #save fasta files locally
         with open(loc, 'wb') as f:
